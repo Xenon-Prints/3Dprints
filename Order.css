@@ -1,0 +1,84 @@
+
+@font-face {
+  font-family: "octo";
+  src: url("assets/octo.ttf");
+}
+body {
+  margin: 0;
+  font-family: "octo";
+  background-image: linear-gradient(green,darkgreen);
+  color: #bbbbbb;
+}
+
+button {
+    font-family: "octo";
+}
+/* Add a black background color to the top navigation */
+.topmenu {
+  background-color: #333;
+  overflow: hidden;
+    position: sticky;
+    top: 0;
+    height: 20px;
+
+}
+
+@keyframes hoverani {
+    from{height: 19px;
+    }
+    to{height: 17px;
+    }
+}
+
+/* Style the links inside the navigation bar */
+.topmenu button:not(.active) {
+  float: left;
+  color: darkgreen;
+  background-color: darkgreen;
+  text-align: center;
+  font-size: 60%;
+  border-radius: 2px;
+}
+
+
+/* Change the color of links on hover */
+.topmenu button:hover:not(.active) {
+  background-color: green;
+  color: black;
+    width: 17%;
+    animation-name: hoverani;
+    animation-duration: .25s;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+    animation-direction: alternate-reverse;
+}
+
+/* Add a color to the active/current link */
+.topmenu button.active {
+    float:left;
+  background-color: #10790f;
+  color: #bababa;
+    width: 16%;
+    font-size: auto;
+    height: 20px;
+    border-radius: 2px;
+}
+@media screen and (max-width: 400px) {
+  .topmenu button:not(.active) {display: none;}
+  .topmenu button.active {
+    float: right;
+    display: block;
+    width: 100%;
+  }
+}
+.title {
+    margin: auto;
+    width: 50%;
+    font-family: "octo";
+    text-align: center;
+    font-size: 4vw;
+    background-color: rgba(128, 128, 128, 0.75);
+    border-radius: 10px;
+    height: auto;
+    width: 75%;
+}

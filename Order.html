@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>My HTML Page</title>
+    <link rel="stylesheet" href="Order.css" />
+  </head>
+  <body>
+    <div class="topmenu">
+        <button onclick="location.href='index.html'"><b>Home</b></button>
+        <button><b>Shop</b></button>
+      <button class="active"><b>Order</b></button>
+      <button><b>Pricing</b></button>
+      <button><b>About</b></button>
+      <button><b>Contact</b></button>
+    </div>
+      <div class="title">
+          <h1>PRICING</h1>
+      </div>
+      <div class="calculator">
+        <input type="range" value="24" min="1" max="100" oninput="this.nextElementSibling.value = this.value" id="size">
+          <output>24</output>
+          
+          <script>
+          </script>
+        <button>Show results</button>
+      </div>
+    </body>
+</html>
