@@ -1,84 +1,181 @@
-
 @font-face {
   font-family: "octo";
   src: url("assets/octo.ttf");
 }
+
 body {
   margin: 0;
   font-family: "octo";
-  background-image: linear-gradient(green,darkgreen);
+  background-image: linear-gradient(#000000, #000000);
   color: #bbbbbb;
 }
 
 button {
-    font-family: "octo";
+  font-family: "octo";
+  position: relative;
+  overflow: hidden;
+  text-align: center;
 }
+
 /* Add a black background color to the top navigation */
 .topmenu {
   background-color: #333;
   overflow: hidden;
-    position: sticky;
-    top: 0;
-    height: 20px;
-
+  position: sticky;
+  top: 0;
+  height: 25px;
 }
 
 @keyframes hoverani {
-    from{height: 19px;
-    }
-    to{height: 17px;
-    }
+  from {
+    height: 25px;
+  }
+  to {
+    height: 25px;
+  }
 }
 
 /* Style the links inside the navigation bar */
 .topmenu button:not(.active) {
   float: left;
-  color: darkgreen;
+  color: #000000;
   background-color: darkgreen;
   text-align: center;
   font-size: 60%;
   border-radius: 2px;
+  height: 25px;
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-
 
 /* Change the color of links on hover */
 .topmenu button:hover:not(.active) {
-  background-color: green;
+  background-color: #00ff00;
   color: black;
-    width: 17%;
-    animation-name: hoverani;
-    animation-duration: .25s;
-    animation-iteration-count: infinite;
-    animation-delay: 0s;
-    animation-direction: alternate-reverse;
+  width: 17%;
+  animation-name: hoverani;
+  animation-duration: 0.25s;
+  animation-iteration-count: infinite;
+  animation-delay: 0s;
+  animation-direction: alternate-reverse;
+}
+
+/* Add text on hover using the ::before pseudo-element */
+.topmenu button:hover::before {
+  content: attr(data-text); /* Use the data-text attribute for hover text */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Default button state: show icons */
+.topmenu button i {
+  display: inline-block;
+}
+
+/* Hide the icon on hover */
+.topmenu button:hover i {
+  display: none;
 }
 
 /* Add a color to the active/current link */
 .topmenu button.active {
-    float:left;
-  background-color: #10790f;
-  color: #bababa;
-    width: 16%;
-    font-size: auto;
-    height: 20px;
-    border-radius: 2px;
+  float: left;
+  background-color: #02ca00;
+  color: #000000;
+  width: 16%;
+  font-size: auto;
+  height: 25px;
+  border-radius: 2px;
 }
+
 @media screen and (max-width: 400px) {
-  .topmenu button:not(.active) {display: none;}
+  .topmenu button:not(.active) {
+    display: none;
+  }
+
   .topmenu button.active {
     float: right;
     display: block;
     width: 100%;
   }
 }
+
+@keyframes imgtitle {
+  from {
+    width: 150px;
+    height: 150px;
+  }
+  to {
+    width: 170px;
+    height: 170px;
+  }
+}
+
 .title {
-    margin: auto;
-    width: 50%;
-    font-family: "octo";
-    text-align: center;
-    font-size: 4vw;
-    background-color: rgba(128, 128, 128, 0.75);
-    border-radius: 10px;
-    height: auto;
-    width: 75%;
+  padding: 5px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.title img {
+  animation-iteration-count: infinite;
+  animation-name: imgtitle;
+  animation-direction: alternate;
+  align-content: center;
+  border: none;
+}
+
+@keyframes wiggle {
+  from {
+    width: 27%;
+    margin-left: 39%;
+  }
+  to {
+    width: 25%;
+    margin-left: 40%;
+  }
+}
+
+.shopdesc button {
+  width: 25%;
+  height: 50px;
+  margin: auto;
+  margin-left: 40%;
+  background-color: #429142;
+  font-size: 15px;
+  border-radius: 10px;
+}
+
+/* Hover effect for shop description button */
+.shopdesc button:hover {
+  animation-name: wiggle;
+  animation-duration: 0.2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+
+.orderdesc button {
+  width: 25%;
+  height: 50px;
+  margin: auto;
+  margin-left: 40%;
+  background-color: #429142;
+  font-size: 15px;
+  border-radius: 10px;
+  float: left;
+}
+
+.orderdesc img {}
+
+.orderdesc button:hover {
+  animation-name: wiggle;
+  animation-duration: 0.2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
 }
