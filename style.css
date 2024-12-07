@@ -2,68 +2,90 @@
   font-family: "octo";
   src: url("assets/octo.ttf");
 }
+
 body {
   margin: 0;
   font-family: "octo";
-  background-image: linear-gradient(green,darkgreen);
+  background-image: linear-gradient(#000000, #000000);
   color: #bbbbbb;
 }
 
 button {
-    font-family: "octo";
+  font-family: "octo";
+  position: relative;
+  overflow: hidden;
+  text-align: center;
 }
-/* Add a black background color to the top navigation */
+
+/* Top menu container */
 .topmenu {
   background-color: #333;
   overflow: hidden;
-    position: sticky;
-    top: 0;
-    height: 20px;
-
+  position: sticky;
+  top: 0;
+  height: 25px;
 }
 
-@keyframes hoverani {
-    from{height: 19px;
-    }
-    to{height: 17px;
-    }
-}
-
-/* Style the links inside the navigation bar */
-.topmenu button:not(.active) {
+/* Style the buttons */
+.topmenu button {
   float: left;
-  color: darkgreen;
+  color: #000000;
   background-color: darkgreen;
   text-align: center;
   font-size: 60%;
   border-radius: 2px;
+  height: 25px;
+  font-size: 15px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Default state of the buttons (show icon) */
+.topmenu button i {
+  display: inline-block;
+}
 
-/* Change the color of links on hover */
-.topmenu button:hover:not(.active) {
-  background-color: green;
+/* On hover, change background color and show text */
+.topmenu button:hover {
+  background-color: #00ff00;
   color: black;
-    width: 17%;
-    animation-name: hoverani;
-    animation-duration: .25s;
-    animation-iteration-count: infinite;
-    animation-delay: 0s;
-    animation-direction: alternate-reverse;
+  width: 17%;
 }
 
-/* Add a color to the active/current link */
-.topmenu button.active {
-    float:left;
-  background-color: #10790f;
-  color: #bababa;
-    width: 16%;
-    font-size: auto;
-    height: 20px;
-    border-radius: 2px;
+.topmenu button:hover i {
+  display: none; /* Hide the icon on hover */
 }
+
+/* Add text on hover */
+.topmenu button:hover::before {
+  content: attr(data-text); /* Use the data-text attribute for hover text */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Active button style */
+.topmenu button.active {
+  background-color: #02ca00;
+  color: #000000;
+  width: 16%;
+  font-size: auto;
+  height: 25px;
+  border-radius: 2px;
+}
+
+/* Mobile responsive: Show only active button */
 @media screen and (max-width: 400px) {
-  .topmenu button:not(.active) {display: none;}
+  .topmenu button:not(.active) {
+    display: none;
+  }
+
   .topmenu button.active {
     float: right;
     display: block;
@@ -74,95 +96,91 @@ button {
 @keyframes titleani {
   from {
     font-size: 16px;
-    background-image:
-    linear-gradient(to bottom, rgba(0, 255, 20, 0.52), rgba(96, 255, 49, 0.75)),
-    url(assets/images/titleback.jpg);}
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 255, 20, 0.52),
+      rgba(96, 255, 49, 0.75)
+    ),
+    url(assets/images/titleback.jpg);
+  }
   to {
     font-size: 14px;
-    background-image:
-    linear-gradient(to bottom, rgba(111, 255, 61, 0.52), rgba(13, 212, 33, 0.73)),
-    url(assets/images/titleback.jpg);}
+    background-image: linear-gradient(
+      to bottom,
+      rgba(111, 255, 61, 0.52),
+      rgba(13, 212, 33, 0.73)
+    ),
+    url(assets/images/titleback.jpg);
+  }
 }
+
 @keyframes imgtitle {
-    from {
-        width: 150px;
-        height: 150px;
-    }
-    to {
-        width: 170px;
-        height: 170px;
-    }
+  from {
+    width: 150px;
+    height: 150px;
+  }
+  to {
+    width: 170px;
+    height: 170px;
+  }
 }
 
 .title {
-    border: solid,5px;
-    padding: 5px;
-    animation-name: titleani;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-    border-radius: 15px;
-    text-align: center;
-    margin-top: 10px;
-    animation-direction: alternate-reverse;
-
-    width: 90%;
-    height: 250px;
-    background-size: cover;
-    color: white;
-    padding: 20px;
+  border: solid, 5px;
+  padding: 5px;
+  animation-name: titleani;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  border-radius: 15px;
+  text-align: center;
+  margin-top: 10px;
+  animation-direction: alternate-reverse;
+  width: 90%;
+  height: 250px;
+  background-size: cover;
+  color: white;
+  padding: 20px;
 }
+
 .title img {
-    animation-iteration-count: infinite;
-    animation-name: imgtitle;
-    animation-direction: alternate; 
-    align-content: center;
-    border: none;
+  animation-iteration-count: infinite;
+  animation-name: imgtitle;
+  animation-direction: alternate;
+  align-content: center;
+  border: none;
 }
 
-@keyframes wiggle {
-    from {width:27%;
-     margin-left: 39%;}
-    to {width:25%;
-     margin-left: 40%;}
-}
-
+/* Button hover effect for shop and order */
 .shopdesc button {
-    width: 25%;
-    height: 50px;
-    margin: auto;
-    margin-left: 40%;
-    background-color: #429142;
-    font-size: 15px;
-    border-radius: 10px;
-
+  width: 25%;
+  height: 50px;
+  margin: auto;
+  margin-left: 40%;
+  background-color: #429142;
+  font-size: 15px;
+  border-radius: 10px;
 }
+
 .shopdesc button:hover {
-    animation-name: wiggle;
-    animation-duration: .2s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate-reverse;
+  animation-name: wiggle;
+  animation-duration: 0.2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
 }
-
 
 .orderdesc button {
-    width: 25%;
-    height: 50px;
-    margin: auto;
-    margin-left: 40%;
-    background-color: #429142;
-    font-size: 15px;
-    border-radius: 10px;
-    float: left
-
-}
-
-.orderdesc img {
-
+  width: 25%;
+  height: 50px;
+  margin: auto;
+  margin-left: 40%;
+  background-color: #429142;
+  font-size: 15px;
+  border-radius: 10px;
 }
 
 .orderdesc button:hover {
-    animation-name: wiggle;
-    animation-duration: .2s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate-reverse;
+  animation-name: wiggle;
+  animation-duration: 0.2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
 }
