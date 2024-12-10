@@ -8,6 +8,7 @@ body {
   font-family: "octo";
   background-image: linear-gradient(#000000, #000000);
   color: #bbbbbb;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 button {
@@ -15,6 +16,11 @@ button {
   position: relative;
   overflow: hidden;
   text-align: center;
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 16px; /* Adjusted button text size */
+  border: none;
+  cursor: pointer;
 }
 
 /* Top menu container */
@@ -23,25 +29,27 @@ button {
   overflow: hidden;
   position: sticky;
   top: 0;
-  height: 25px;
+  z-index: 10;
+  height: 40px; /* Increased height for mobile devices */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 10px;
 }
 
-/* Style the buttons */
+/* Style the buttons in top menu */
 .topmenu button {
-  float: left;
   color: #000000;
   background-color: darkgreen;
-  text-align: center;
-  font-size: 60%;
-  border-radius: 2px;
-  height: 25px;
-  font-size: 15px;
-  position: relative;
-  overflow: hidden;
+  font-size: 14px; /* Adjusted font-size for mobile */
+  border-radius: 5px;
+  height: 35px;
+  flex: 1;
   transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 5px;
+  margin: 5px;
 }
 
-/* Default state of the buttons (show icon) */
 .topmenu button i {
   display: inline-block;
 }
@@ -50,14 +58,12 @@ button {
 .topmenu button:hover {
   background-color: #00ff00;
   color: black;
-  width: 17%;
 }
 
 .topmenu button:hover i {
   display: none; /* Hide the icon on hover */
 }
 
-/* Add text on hover */
 .topmenu button:hover::before {
   content: attr(data-text); /* Use the data-text attribute for hover text */
   position: absolute;
@@ -74,43 +80,103 @@ button {
 .topmenu button.active {
   background-color: #02ca00;
   color: #000000;
-  width: 16%;
-  font-size: auto;
-  height: 25px;
-  border-radius: 2px;
+  width: 100%; /* Full width for active button */
+  font-size: 16px;
+  height: 40px;
 }
 
-/* Mobile responsive: Show only active button */
-@media screen and (max-width: 400px) {
+/* Mobile responsive: Stack and show only active button */
+@media screen and (max-width: 600px) {
+  .topmenu {
+    flex-direction: column;
+    height: auto; /* Allow height to expand for mobile */
+  }
+
+  .topmenu button {
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  /* Mobile: Show only the active button */
   .topmenu button:not(.active) {
     display: none;
   }
 
   .topmenu button.active {
-    float: right;
-    display: block;
+    float: none;
     width: 100%;
+    display: block;
   }
 }
 
+/* Title with animated effect */
+.title {
+  border: solid 5px;
+  padding: 20px;
+  animation-name: titleani;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  border-radius: 15px;
+  text-align: center;
+  margin-top: 20px;
+  animation-direction: alternate-reverse;
+  width: 90%;
+  height: 250px;
+  background-size: cover;
+  color: white;
+}
+
+.title img {
+  animation-iteration-count: infinite;
+  animation-name: imgtitle;
+  animation-direction: alternate;
+  border: none;
+  max-width: 100%; /* Make image responsive */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Button hover effect for shop and order */
+.shopdesc button, .orderdesc button {
+  width: 100%;
+  height: 50px;
+  background-color: #429142;
+  font-size: 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+  display: block;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect for buttons */
+.shopdesc button:hover, .orderdesc button:hover {
+  animation-name: wiggle;
+  animation-duration: 0.2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  transform: scale(1.05); /* Subtle scale effect */
+}
+
+/* Mobile-specific button styles */
+@media screen and (max-width: 600px) {
+  .shopdesc button, .orderdesc button {
+    width: 80%; /* Slightly smaller buttons on mobile */
+    margin-left: 10%;
+    font-size: 14px; /* Adjust button text size for mobile */
+  }
+}
+
+/* Keyframe animations */
 @keyframes titleani {
   from {
     font-size: 16px;
-    background-image: linear-gradient(
-      to bottom,
-      rgba(0, 255, 20, 0.52),
-      rgba(96, 255, 49, 0.75)
-    ),
-    url(assets/images/titleback.jpg);
+    background-image: linear-gradient(to bottom, rgba(0, 255, 20, 0.52), rgba(96, 255, 49, 0.75)), url(assets/images/titleback.jpg);
   }
   to {
     font-size: 14px;
-    background-image: linear-gradient(
-      to bottom,
-      rgba(111, 255, 61, 0.52),
-      rgba(13, 212, 33, 0.73)
-    ),
-    url(assets/images/titleback.jpg);
+    background-image: linear-gradient(to bottom, rgba(111, 255, 61, 0.52), rgba(13, 212, 33, 0.73)), url(assets/images/titleback.jpg);
   }
 }
 
@@ -123,64 +189,4 @@ button {
     width: 170px;
     height: 170px;
   }
-}
-
-.title {
-  border: solid, 5px;
-  padding: 5px;
-  animation-name: titleani;
-  animation-duration: 5s;
-  animation-iteration-count: infinite;
-  border-radius: 15px;
-  text-align: center;
-  margin-top: 10px;
-  animation-direction: alternate-reverse;
-  width: 90%;
-  height: 250px;
-  background-size: cover;
-  color: white;
-  padding: 20px;
-}
-
-.title img {
-  animation-iteration-count: infinite;
-  animation-name: imgtitle;
-  animation-direction: alternate;
-  align-content: center;
-  border: none;
-}
-
-/* Button hover effect for shop and order */
-.shopdesc button {
-  width: 25%;
-  height: 50px;
-  margin: auto;
-  margin-left: 40%;
-  background-color: #429142;
-  font-size: 15px;
-  border-radius: 10px;
-}
-
-.shopdesc button:hover {
-  animation-name: wiggle;
-  animation-duration: 0.2s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate-reverse;
-}
-
-.orderdesc button {
-  width: 25%;
-  height: 50px;
-  margin: auto;
-  margin-left: 40%;
-  background-color: #429142;
-  font-size: 15px;
-  border-radius: 10px;
-}
-
-.orderdesc button:hover {
-  animation-name: wiggle;
-  animation-duration: 0.2s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate-reverse;
 }

@@ -1,20 +1,28 @@
 <html>
   <head>
-    <title>Xenon-Prints|Ordering</title>
-    <link rel="stylesheet" href="Order.css" />
+    <title>Xenon-Prints|Pricing</title>
+    <link rel="stylesheet" href="Pricing.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
   </head>
   <body>
     <div class="topmenu">
         <button onclick="location.href='index.html'" data-text="Home"><i class="fa fa-home" aria-hidden="true"></i></button>
       <button data-text="Shop"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
-      <button class="active"><b>Order</b></button>
-      <button data-text="Pricing" onclick="location.href='Pricing.html'"><i class="fa fa-money" aria-hidden="true"></i></button>
+      <button onclick="location.href='Order.html'" data-text="Order"><i class="fa fa-laptop" aria-hidden="true"></i></button>
+      <button class="active">Pricing</button>
       <button data-text="About"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
       <button data-text="Contact"><i class="fa fa-comments-o" aria-hidden="true"></i></button>
-    </div>
+      </div>
       <div class="title">
-          <h1>Ordering</h1>
+          <h1>PRICING</h1>
+      </div>
+      <div class="calculator">
+        <input type="range" value="24" min="1" max="100" oninput="this.nextElementSibling.value = this.value" id="size">
+          <output>24</output>
+          
+          <script>
+          </script>
+        <button>Show results</button>
       </div>
     </body>
 </html>
